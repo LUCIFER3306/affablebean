@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Trips</title>
+</head>
+<body>
+    <div layout:fragment="admin">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Sight Stops</th>
+                    <th>Day Durations</th>
+                    <th>Night Durations</th>
+                    <th>Type Durations</th>
+                    <th>Other Transports</th>
+                    <th>Language</th>
+                    <th>Price Adult</th>
+                    <th>Price-Kids</th>
+                    <th>Station Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="trip:${trips}">
+                    <td th:text="${trip.name}"></td>
+                    <td th:text="${trip.sight_stop}"></td>
+                    <td th:text="${trip.dayDurations}"></td>
+                    <td th:text="${trip.nightDurations}"></td>
+                    <td th:text="${trip.typeDurations}"></td>
+                    <td th:text="${trip.otherTransports}"></td>
+                    <td th:text="${trip.language}"></td>
+                    <td th:text="${trip.priceAdult}"></td>
+                    <td th:text="${trip.priceKids}"></td>
+                    <td th:text="${trip.stationDetails.address}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

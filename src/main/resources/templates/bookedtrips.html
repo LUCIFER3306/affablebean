@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Booked Trips</title>
+</head>
+<body>
+    <div layout:fragment="admin">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Trips</th>
+                    <th>Adult Counts</th>
+                    <th>Kids Counts</th>
+                    <th>Booked Date</th>
+                    <th>Customer</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="bookedtrip:${bookedtrips}">
+                    <td th:text="${bookedtrip.trip.name}"></td>
+                    <td th:text="${bookedtrip.adults}"></td>
+                    <td th:text="${bookedtrip.kids}"></td>
+                    <td th:text="${bookedtrip.bookedDate}"></td>
+                    <td th:text="${bookedtrip.customerInfo.login}"></td>
+                    <td th:text="${bookedtrip.status}"></td>
+                    <td th:text="${bookedtrip.total}"></td>
+                </tr>
+                <tr>
+                    <td scope="row"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

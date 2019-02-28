@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="admin">
+        <form action="#" th:action="@{/trip/creation}" th:object="${trip}" method="post">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text"
+                       th:field="*{name}"
+                       class="form-control" name="" id="name" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('name')}" class="text text-danger" th:errors="*{name}"></p>
+            </div>
+            <div class="form-group">
+                <label for="sight">Sight Stops</label>
+                <input type="number"
+                       th:field="*{sight_stop}"
+                       class="form-control" name="" id="sight" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('sight_stop')}" class="text text-danger" th:errors="*{sight_stop}"></p>
+            </div>
+            <div class="form-group">
+                <label for="dayDuration">Day Durations</label>
+                <input type="number"
+                       th:field="*{dayDurations}"
+                       class="form-control" name="" id="dayDuration" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('dayDurations')}" class="text text-danger" th:errors="*{dayDurations}"></p>
+            </div>
+            <div class="form-group">
+                <label for="nightDuration">NIght Durations</label>
+                <input type="number"
+                       th:field="*{nightDurations}"
+                       class="form-control" name="" id="nightDuration" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('nightDurations')}" class="text text-danger" th:errors="*{nightDurations}"></p>
+            </div>
+            <div class="form-group">
+                <label for="typeDuration">Type Durations</label>
+                <input type="text"
+                       th:field="*{typeDurations}"
+                       class="form-control" name="" id="typeDuration" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('typeDurations')}" class="text text-danger" th:errors="*{typeDurations}"></p>
+            </div>
+            <div class="form-group">
+                <label for="otherTransports">Other Transports</label>
+                <input type="text"
+                       th:field="*{otherTransports}"
+                       class="form-control" name="" id="otherTransports" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('otherTransports')}" class="text text-danger" th:errors="*{otherTransports}"></p>
+            </div>
+            <div class="form-group">
+                <label for="language">Language</label>
+                <input type="text"
+                       th:field="*{language}"
+                       class="form-control" name="" id="language" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('language')}" class="text text-danger" th:errors="*{language}"></p>
+            </div>
+            <div class="form-group">
+                <label for="priceAdult">Price-Adult</label>
+                <input type="number" step="any"
+                       th:field="*{priceAdult}"
+                       class="form-control" name="" id="priceAdult" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('priceAdult')}" class="text text-danger" th:errors="*{priceAdult}"></p>
+            </div>
+            <div class="form-group">
+                <label for="priceKids">Price-Kids</label>
+                <input type="number" step="any"
+                       th:field="*{priceKids}"
+                       class="form-control" name="" id="priceKids" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('priceKids')}" class="text text-danger" th:errors="*{priceKids}"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="stationDetails">Station Details</label>
+                <select class="form-control" name="" th:field="*{stationDetails}" id="stationDetails">
+                    <option th:each="stat:${stationDetails}" th:value="${stat.id}" th:text="${stat.address}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

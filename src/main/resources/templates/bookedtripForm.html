@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout.html">
+<head>
+    <meta charset="UTF-8">
+    <title>BookedTrip Form</title>
+</head>
+<body>
+    <div layout:fragment="admin">
+        <form action="#" th:action="@{/bookedtrip/creation}" th:object="${bookedTrip}" method="post">
+            <div class="form-group">
+                <label for="trip">Trips</label>
+                <select class="form-control" name="" th:field="*{trip}" id="trip">
+                    <option th:each="trip:${trips}" th:value="${trip.id}" th:text="${trip.name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="adult">Adult Counts</label>
+                <input type="number"
+                       th:field="*{adults}"
+                       class="form-control" name="" id="adult" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('adults')}" class="text text-danger" th:errors="*{adults}"></p>
+            </div>
+            <div class="form-group">
+                <label for="kids">Kids Counts</label>
+                <input type="number"
+                       th:field="*{kids}"
+                       class="form-control" name="" id="kids" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('kids')}" class="text text-danger" th:errors="*{kids}"></p>
+            </div>
+            <div class="form-group">
+                <label for="date">Booked Date</label>
+                <input type="date"
+                       th:field="*{bookedDate}"
+                       class="form-control" name="" id="date" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('bookedDate')}" class="text text-danger" th:errors="*{bookedDate}"></p>
+            </div>
+            <div class="form-group">
+                <label for="customer">Customer</label>
+                <select class="form-control" name="" th:field="*{customerInfo}" id="customer">
+                    <option th:each="customer:${customerInfo}" th:value="${customer.id}" th:text="${customer.login}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text"
+                       th:field="*{status}"
+                       class="form-control" name="" id="status" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('status')}" class="text text-danger" th:errors="*{status}"></p>
+            </div>
+            <div class="form-group">
+                <label for="total">Total</label>
+                <input type="number" step="any"
+                       th:field="*{total}"
+                       class="form-control" name="" id="total" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('total')}" class="text text-danger" th:errors="*{total}"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

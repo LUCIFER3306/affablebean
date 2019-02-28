@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="admin">
+        <form action="#" th:action="@{/bookingPayment/creation}" th:object="${bookingpayment}" method="post">
+            <div class="form-group">
+                <label for="mode">Mode</label>
+                <input type="text"
+                       th:field="*{mode}"
+                       class="form-control" name="" id="mode" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('mode')}" class="text text-danger" th:errors="*{mode}"></p>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text"
+                       th:field="*{status}"
+                       class="form-control" name="" id="status" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('status')}" class="text text-danger" th:errors="*{status}"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

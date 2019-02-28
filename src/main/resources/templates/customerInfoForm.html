@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layout/adminLayout.html">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Form</title>
+</head>
+<body>
+    <div layout:fragment="admin">
+        bs4-
+        <form action="#" th:action="@{/customerInfo/creation}" th:object="${customers}" method="post">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text"
+                       th:field="*{firstName}"
+                       class="form-control" name="" id="firstName" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('firstName')}" class="text text-danger" th:errors="*{firstName}"></p>
+            </div>
+            <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text"
+                       th:field="*{middleName}"
+                       class="form-control" name="" id="middleName" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('middleName')}" class="text text-danger" th:errors="*{middleName}"></p>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text"
+                       th:field="*{lastName}"
+                       class="form-control" name="" id="lastName" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('lastName')}" class="text text-danger" th:errors="*{lastName}"></p>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="text"
+                       th:field="*{age}"
+                       class="form-control" name="" id="age" aria-describedby="helpId" placeholder="">
+                <p th:if="${#fields.errors('age')}" class="text text-danger" th:errors="*{age}"></p>
+            </div>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <select class="form-control" name="" th:field="*{login}" id="login">
+                    <option th:each="log:${login}" th:value="${log.id}" th:text="${log.username}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
